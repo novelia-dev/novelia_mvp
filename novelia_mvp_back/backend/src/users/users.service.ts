@@ -45,8 +45,18 @@ export class UsersService {
     const signupVerifyToken = uuid.v1();
 
     // 유저를 데이터베이스에 저장
-    await this.saveUser(name, email, password, signupVerifyToken);
+    //const user = await this.saveUser(name, email, password, signupVerifyToken);
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await this.usersRepository.create({
+      email,
+      name,
+      password: hashedPassword,
+      signupVerifyToken,
+    });
     await this.sendMemberJoinEmail(email, signupVerifyToken);
+    console.log(user);
+    return user.readOnlyData;
   }
 
   private async checkUserExists(email: string) {
@@ -69,7 +79,7 @@ export class UsersService {
       signupVerifyToken,
     });
 
-    return user.readOnlyData;
+    return user;
   }
 
   // 회원가입 이메일 발송
@@ -84,7 +94,7 @@ export class UsersService {
     await this.usersRepository.findByTokenAndChangeToValidEmail(
       signupVerifyToken,
     );
-    return 'done'; // TODO: DB에서 signupVerifyToken으로 회원 가입 처리중인 유저가 있는지 조회하고 없다면 에러 처리 2. 바로 로그인 상태가 되도록 JWT발급.
+    return '이메일 인증이 완료되었습니다!'; // TODO: DB에서 signupVerifyToken으로 회원 가입 처리중인 유저가 있는지 조회하고 없다면 에러 처리 2. 바로 로그인 상태가 되도록 JWT발급.
   }
 
   async getAllUser() {

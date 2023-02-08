@@ -48,10 +48,11 @@ export class EmailService {
       //     ${num}
       //   `,
       html: `
-        가입확인 버튼를 누르시면 가입 인증이 완료됩니다.<br/>
-        <form action="${url}" method="POST">
-          <button>가입확인</button>
-        </form>
+      <p>안녕하세요 노벨리스트입니다.</p>
+      <p>가입확인 버튼를 누르시면 가입 인증이 완료됩니다.</p>
+      <form action="${url}" method="POST">
+        <button>가입확인</button>
+      </form>
       `,
     };
 
