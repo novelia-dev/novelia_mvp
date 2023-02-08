@@ -3,6 +3,7 @@ import { CreateUserDto } from '../dto/create-user.dto';
 import { UserLoginDto } from '../dto/user-login.dto';
 import { VerifyEmailDto } from '../dto/verify-email.dto';
 import { UsersService } from './users.service';
+import { User } from './users.schema';
 
 @Controller('users')
 export class UsersController {
@@ -30,5 +31,10 @@ export class UsersController {
   async getUserInfo(@Param('id') userId: string) {
     console.log(userId);
     return;
+  }
+
+  @Get('/all')
+  async getAllUserInfo() {
+    return await this.usersService.getAllUser();
   }
 }
