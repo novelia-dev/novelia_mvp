@@ -14,11 +14,13 @@ import { UserSchema } from './users.schema';
 import { UsersRepository } from './users.repository';
 import { EmailModule } from 'src/email/email.module';
 import { LoggerMiddleware } from 'src/common/logger/logger.middleware';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     forwardRef(() => EmailModule),
+    forwardRef(() => AuthModule),
   ],
   //  imports: [TypeOrmModule.forFeature([User])],
   providers: [UsersService, EmailService, UsersRepository],

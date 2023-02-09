@@ -38,12 +38,12 @@ export class UsersRepository {
     }
   }
 
-  //   async findCatByIdWithoutPassword(
-  //     catId: string | Types.ObjectId,
-  //   ): Promise<User | null> {
-  //     const cat = await this.userModel.findById(catId).select('-password');
-  //     return cat;
-  //   }
+  async findUserByIdWithoutPassword(
+    userId: string | Types.ObjectId,
+  ): Promise<User | null> {
+    const user = await this.userModel.findById(userId).select('-password');
+    return user;
+  }
 
   async findUserByEmail(email: string): Promise<User | null> {
     const user = await this.userModel.findOne({ email });

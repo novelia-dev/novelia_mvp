@@ -10,6 +10,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.entity';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -33,6 +34,7 @@ import { User } from './users/user.entity';
     }),
     UsersModule,
     EmailModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
