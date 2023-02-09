@@ -34,6 +34,10 @@ export class UsersService {
   //   });
   // }
 
+  logout() {
+    return '어딘가에 저장해놓은 jwt를 프론트상에서 없애주세요!';
+  }
+
   async createUser(name: string, email: string, password: string) {
     // 가입하려는 유저가 존재하는지 검사 우선 false
     const isOld = await this.checkUserExists(email);
