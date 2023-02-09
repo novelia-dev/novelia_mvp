@@ -12,6 +12,7 @@ export class UsersRepository {
 
   async findAll() {
     const result = await this.userModel.find();
+    console.log('findAll', result);
     return result;
   }
 
