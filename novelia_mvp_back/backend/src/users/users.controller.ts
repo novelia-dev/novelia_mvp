@@ -23,18 +23,18 @@ export class UsersController {
 
   @Post('/login')
   async login(@Body() dto: UserLoginDto): Promise<string> {
-    console.log(dto);
-    return;
-  }
-
-  @Get('/:id')
-  async getUserInfo(@Param('id') userId: string) {
-    console.log(userId);
+    const { email, password } = dto;
     return;
   }
 
   @Get('/all')
   async getAllUserInfo() {
     return await this.usersService.getAllUser();
+  }
+
+  @Get('/:id')
+  async getUserInfo(@Param('id') userId: string) {
+    console.log(userId);
+    return;
   }
 }

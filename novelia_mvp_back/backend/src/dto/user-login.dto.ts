@@ -20,7 +20,6 @@ export class UserLoginDto extends Document {
   password: string;
 
   readonly readOnlyData: {
-    id: string;
     email: string;
   };
 }

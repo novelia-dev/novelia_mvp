@@ -99,7 +99,10 @@ export class UsersService {
 
   async getAllUser() {
     const allUser = await this.usersRepository.findAll();
-    const readOnlyUsers = allUser.map((user) => user.readOnlyData);
+    const readOnlyUsers = allUser.map((user) => {
+      console.log(user.email, user.name, 'hihi');
+      return { email: user.email, name: user.name };
+    });
     return readOnlyUsers;
   }
 }
