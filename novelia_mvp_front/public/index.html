@@ -24,6 +24,17 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"charset="utf-8"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"> </script>
+      <script>
+        Kakao.init('c4f26da057aa0424ec5de6f28c5e249d');
+        console.log(Kakao.isInitialized());
+      </script>
+    <!--<script>
+      Kakao.init('c4f26da057aa0424ec5de6f28c5e249d')
+      console.log('intialized')
+    </script>
+   -->
     <title>React App</title>
   </head>
   <body>
