@@ -36,7 +36,7 @@ const Text = ()=> {
  class Button extends React.Component{
     constructor(props){
         super(props);
-    }render(){
+    } render(){
        
         return(
             <div style={{margintop:"106px",marginLeft:"375px"}}>

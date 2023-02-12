@@ -1,21 +1,11 @@
-import React,{Component} from 'react';
+import React,{Component, useEffect} from 'react';
 import KaKao from '../Image/카카오톡.png';
 import Naver from '../Image/네이버.png';
 import Novelist from '../Image/image 1.png';
-/*import {REST_API_KEY , REDIRECT_URI }from './KakaoLogin';
-/*function KakaoLogin(){
-    Kakao.Auth.longin({
-success:: function (response){
-    Kakao.API.request({
-        url:
-    })
-}
-})}*/
-/*
-const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-const handleLogin =()=>{
-window.location.href = KAKAO_AUTH_URL;
-}*/
+import {REST_API_KEY, REDIRECT_URI} from './KakaoLogin';
+import {useLocation, useNavigate} from 'react-router-dom';
+
+
 class Loginpage extends React.Component{
     constructor(props){
         super(props);
@@ -26,7 +16,6 @@ class Loginpage extends React.Component{
             <div>
                 
                 <Text />
-                <Square />
                 <Kakao />
             </div>
             
@@ -35,57 +24,62 @@ class Loginpage extends React.Component{
     }
 }
 
-class Kakao extends Component{
-    componentDidMount(){
-        const kakaoScript =document.createElement("script");
-        kakaoScript.src = "https://developers.kakao.com/sdk/js/kakao.min.js";
-       document.head.appendChild(kakaoScript); 
-    
-       kakaoScript.onload =()=>
-       {
-           window.Kakao.init(REST_API_KEY);
-           window.Kakao.Auth.createLoginButton({
-            container:"#kakao-login-btn",
-            success:(auth)=>{
-                console.log("#Kakao 로그인 완료",auth);
-            window.Kakao.API.request({
-                url:REDIRECT_URI,
-            success:(res)=>{    
-                console.log("#Kakao 사용자 정보",res);
-            },
-        fail:(err)=>{
-            console.log(err);
-        },
-    });
-                   },
-                   fail:(err)=>{
-                    console.log(err);
-                   },
-    });  };
-}
-render(){
-    return<button type = "button"id="kakao-login-btn"></button>;
-}
-}          
-class Square extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        const style={
-            width:"588px",
-            height:"850px",
-            'margin-top': "-400px",
-            'margin-left': "666px",
-            'background-color': "#D9D9D9",
-        };
-        return(
-            <div style = {style}>
+function KakaoLogin()
+{
+    const location = useLocation();
+    const navigate = useNavigate();
+    const KAKAO_CODE = location.search.split('=')[1];
 
+    const getKakaoToken = () => {
+        fetch(`https://kauth.kakao.com/oauth/token`, {
+            method: 'GET',
+            headers : {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: `grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${KAKAO_CODE}`,
+        })
+        .then(res => res.sjson())
+        .then(data => {
+            if(data.access_token){
+                localStorage.setItem('token', data.access_token);
+
+            }else {
+                navigate('/');
+            }
+        });
+    };
+
+    /*useEffect(() => {
+        if(!location.search) return;
+        getKakaoToken();
+    }, []);*/
+
+    return <div>KakaoLogin</div>
+}
+
+
+class Kakao extends React.Component {
+
+
+      render(){
+
+       const Login = () => {
+            const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+            window.location.href = KAKAO_AUTH_URL;
+             }
+
+       
+        return(
+            <div style={{marginTop: "300px", marginLeft: "850px"}}>
+            <button onClick={Login}>
+                 <p>카카오로 로그인</p>
+            </button>
             </div>
         )
+
+
     }
 }
+
+
 
 class Text extends React.Component{
     constructor(props)
@@ -138,11 +132,6 @@ class Text extends React.Component{
                 <h1>Login</h1>
                 
                 <h3>소셜 로그인으로 빠르게 시작하세요!</h3>
-                
-            </div>
-            <div className="image">
-                <div style={style3}><img className="Kakao" alt="kakao" src={KaKao} /*onClick={handleLogin}*/ style={{width:"78px",height:"78px"}} /></div>
-                <div style={style4}><img className="Naver" alt="naver" src={Naver} style={{width:"78px", height:"78px"}} /></div>
                 
             </div>
             </div>
