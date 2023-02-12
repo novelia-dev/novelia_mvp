@@ -1,5 +1,5 @@
 import React,{Component, useEffect} from 'react';
-import KaKao from '../Image/카카오톡.png';
+import Kakaoimage from '../Image/카카오톡.png';
 import Naver from '../Image/네이버.png';
 import Novelist from '../Image/image 1.png';
 import {REST_API_KEY, REDIRECT_URI} from './KakaoLogin';
@@ -69,9 +69,7 @@ class Kakao extends React.Component {
        
         return(
             <div style={{marginTop: "300px", marginLeft: "850px"}}>
-            <button onClick={Login}>
-                 <p>카카오로 로그인</p>
-            </button>
+              <img className="Kakaoimage" alt="Kakaoimage" onClick={Login} style={{width:"180px", height:"163px"}}src={Kakaoimage} />
             </div>
         )
 
