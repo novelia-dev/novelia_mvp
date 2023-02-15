@@ -12,7 +12,7 @@ import Registerpage from"./components/Registerpage/Registerpage";
 import Registerpage2 from "./components/Registerpage/Registerpage2";
 import Registerpage3 from "./components/Registerpage/Registerpage3";
 import Registerpage4 from "./components/Registerpage/Registerpage4";
-
+import Footer from "./components/Footer/Footer";
 import Registerpage6 from "./components/Registerpage/Registerpage6";
 import Readworkpage from "./components/Readworkpage/Readworkpage";
 import Readworkpage2 from "./components/Readworkpage/Readworkpage2";
@@ -52,8 +52,9 @@ function App() {
             <Route path ="/choose" element={<Choose />} />
             <Route path ="/write" element= {<Write />} />
           </Routes>
+          
         </div>
-        
+        <Footer />
       </Suspense>
     </Router>
   );
