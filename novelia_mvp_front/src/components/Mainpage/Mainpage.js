@@ -1,65 +1,52 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import main from '../Image/image 49.png';
+import Pagination from "./Pagination";
+import Posts from "./Post";
+import axios from "axios";
 
 function Mainpage(){
-    return(
+
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(10);
+
+    useEffect(()=>{
+        const fetchData = async() =>{
+            setLoading(true);
+            const response = await axios.get(
+                "https://jsonplaceholder.typicode.com/posts"
+            );
+            setPosts(response.data);
+            setLoading(false);
+        };
+        fetchData();
+    },[]);
+
+    console.log(posts);
+
+    const indexOfLast = currentPage * postsPerPage;
+    const indexOfFirst = indexOfLast - postsPerPage;
+    const currentPosts = (posts) => {
+        let currentPosts = 0;
+        currentPosts = posts.slice(indexOfFirst, indexOfLast);
+        return currentPosts;
+    };
+
+    return (
         <div>
-            <Image />
-            <Text />
+        <div>
+            <img src ={main} alt="배너" style={{width:"1200px",height:"270px",top:"150px",left:"360px",position:"absolute"}}/>
+        </div>
+        <div style={{marginTop:"500px", marginLeft:"360px"}}>
+            <Posts posts={currentPosts(posts)} loading={loading}></Posts>
+            <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={posts.length}
+                paginate={setCurrentPage}
+            ></Pagination>
+        </div>
         </div>
     );
 }
-
-class Image extends React.Component{
-    constructor(props)
-    {
-        super(props);
-    }
-    render(){
-        const style ={
-            'width':"540.4px",
-            'height':"160px",
-            'margin-top':"35px",
-            'margin-left':"300px",
-            'background-color':"#D9D9D9",
-        }
-
-        return(
-            <div style={style}>
-
-            </div>
-        )
-    }
-
-}
-
-const Text = () => {
-
-    const style={
-        'width':'107px',
-        'height':'45px',
-        'margin-top':"443px",
-        'margin-left':"1307px",
-        'font-family':"Roboto",
-        'font-weight': 400,
-        'font-size':"16px",
-        'line-height':"18.75px",
-        'text-align':"center",
-
-    }
-
-    return(
-        <div style={style}>
-            <table>
-                <tr>
-                    <td style={{width:"107px"}}><u>추천순</u></td>
-                    <td style={{width:"107px"}}><u>최신순</u></td>
-                </tr>
-                <tr>
-
-                </tr>
-            </table>
-        </div>
-    )
-}
-
 export default Mainpage;

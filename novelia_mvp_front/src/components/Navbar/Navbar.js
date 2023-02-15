@@ -23,7 +23,7 @@ const Text = ()=> {
     <table>
     <tr>
     <td><img className="Novelist" alt="Novelist" style={{width:"122.9px", height:"30px",marginTop:"30px",marginLeft:"225px"}}src={Novelist} /></td>
-       <td><input type="text" placeholder="#해쉬태그로 검색해보세요" style={{width: "588px",height: "30px", marginTop:"30px",marginLeft:"441px",backgroundColor:'#FFFFFF'}}></input></td>
+    <td><input type="text" placeholder="#해쉬태그로 검색해보세요" style={{width: "588px",height: "30px", marginTop:"30px",marginLeft:"441px",backgroundColor:'#FFFFFF'}}></input></td>
 
     </tr>
        

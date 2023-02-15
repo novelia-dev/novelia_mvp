@@ -23,12 +23,13 @@ import Notice2 from "./components/Notice/Notice2";
 import Ask from "./components/Ask/Ask";
 import Tos from "./components/Tos/Tos";
 import Privacypolicy from "./components/Privacypolicy/Privacypolicy";
-
+import Choose from "./components/Feedback/Choose";
+import Write from "./components/Feedback/Write";
 function App() {
   return (
     <Router>
       <Suspense fallback ={<div>Loading...</div>}>
-       
+       <Navbar />
         <div>
           <Routes>
           
@@ -48,6 +49,8 @@ function App() {
             <Route path ="/ask" element={<Ask />} />
             <Route path ="/tos" element={<Tos />} />
             <Route path ="/privacy" element={<Privacypolicy />} />
+            <Route path ="/choose" element={<Choose />} />
+            <Route path ="/write" element= {<Write />} />
           </Routes>
         </div>
         
