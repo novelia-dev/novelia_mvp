@@ -8,29 +8,6 @@ class Registerpage extends React.Component{
         return(
             <div>
                 <Text />             
-                <Square />
-            </div>
-        )
-    }
-}
-
-class Square extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        
-        const style={
-         
-            'width':"582px",
-            'height':"379px",
-            'margin-top':"351px",
-            'margin-left':"666px",
-            'background-color': "#D9D9D9",
-        };
-        return(
-            <div style = {style}>
-
             </div>
         )
     }

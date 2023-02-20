@@ -38,7 +38,7 @@ function Mainpage(){
         <div>
             <img src ={main} alt="배너" style={{width:"1200px",height:"270px",top:"150px",left:"360px",position:"absolute"}}/>
         </div>
-        <div style={{marginTop:"500px", marginLeft:"360px"}}>
+        <div style={{marginTop:"300px", marginLeft:"928px"}}>
             <Posts posts={currentPosts(posts)} loading={loading}></Posts>
             <Pagination
                 postsPerPage={postsPerPage}

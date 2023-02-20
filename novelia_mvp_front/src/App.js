@@ -12,7 +12,7 @@ import Registerpage from"./components/Registerpage/Registerpage";
 import Registerpage2 from "./components/Registerpage/Registerpage2";
 import Registerpage3 from "./components/Registerpage/Registerpage3";
 import Registerpage4 from "./components/Registerpage/Registerpage4";
-
+import Footer from "./components/Footer/Footer";
 import Registerpage6 from "./components/Registerpage/Registerpage6";
 import Readworkpage from "./components/Readworkpage/Readworkpage";
 import Readworkpage2 from "./components/Readworkpage/Readworkpage2";
@@ -25,6 +25,15 @@ import Tos from "./components/Tos/Tos";
 import Privacypolicy from "./components/Privacypolicy/Privacypolicy";
 import Choose from "./components/Feedback/Choose";
 import Write from "./components/Feedback/Write";
+import RegisterText from "./components/RegisterText/RegisterText";
+import RegisterText2 from "./components/RegisterText/RegisterText2";
+import RegisterText3 from "./components/RegisterText/RegisterText3";
+import RegisterText4 from "./components/RegisterText/RegisterText4";
+import RegisterText5 from "./components/RegisterText/RegisterText5";
+import RegisterText6 from "./components/RegisterText/RegisterText6";
+import RegisterText7 from "./components/RegisterText/RegisterText7";
+import Hilight from "./components/RegisterText/Hilight";
+import FeedSelect from "./components/RegisterText/FeedSelect";
 function App() {
   return (
     <Router>
@@ -32,7 +41,6 @@ function App() {
        <Navbar />
         <div>
           <Routes>
-          
             <Route path="/" element={<Mainpage />} />
             <Route path ="/login" element={<Loginpage />} />
             <Route path ="/register" element={<Registerpage />} />
@@ -51,9 +59,20 @@ function App() {
             <Route path ="/privacy" element={<Privacypolicy />} />
             <Route path ="/choose" element={<Choose />} />
             <Route path ="/write" element= {<Write />} />
+            <Route path ="/text" element= {<RegisterText />} />
+            <Route path = "/text/:text" element={<RegisterText2 />}/>
+            <Route path = "/text/1" element = {<RegisterText3 />} />
+            <Route path = "/text/2" element = {<RegisterText4 />} />
+            <Route path = "/text/3" element = {<RegisterText5 />} />
+            <Route path = "/text/4" element = {<RegisterText6 />} />
+            <Route path = "/text/5" element = {<RegisterText7 />} />
+            <Route path ="/high" element= {<Hilight />} />
+            <Route path ="/feed" element= {<FeedSelect />} />
           </Routes>
+          
         </div>
-        
+
+        <Footer />
       </Suspense>
     </Router>
   );
