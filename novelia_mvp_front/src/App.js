@@ -32,6 +32,7 @@ import RegisterText4 from "./components/RegisterText/RegisterText4";
 import RegisterText5 from "./components/RegisterText/RegisterText5";
 import RegisterText6 from "./components/RegisterText/RegisterText6";
 import RegisterText7 from "./components/RegisterText/RegisterText7";
+import ChooseKeyword from "./components/RegisterText/ChooseKeyword";
 import Hilight from "./components/RegisterText/Hilight";
 import FeedSelect from "./components/RegisterText/FeedSelect";
 function App() {
@@ -66,6 +67,7 @@ function App() {
             <Route path = "/text/3" element = {<RegisterText5 />} />
             <Route path = "/text/4" element = {<RegisterText6 />} />
             <Route path = "/text/5" element = {<RegisterText7 />} />
+            <Route path = "/choosekeyword" element = {<ChooseKeyword />} />
             <Route path ="/high" element= {<Hilight />} />
             <Route path ="/feed" element= {<FeedSelect />} />
           </Routes>

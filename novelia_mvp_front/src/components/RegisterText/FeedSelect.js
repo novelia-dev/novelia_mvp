@@ -41,6 +41,7 @@ function FeedSelect(){
                            <input type="checkbox" /> 
                         </td>
                     </tr>
+                    <button>다음</button>
                 </table>
             </div>
         </div>
