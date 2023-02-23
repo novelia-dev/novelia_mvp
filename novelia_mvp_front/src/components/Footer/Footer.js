@@ -4,18 +4,7 @@ import twitter from '../Image/twitter.png';
 import instagram from '../Image/instagram.png';
 import logo from '../Image/수평로고.png';
 
-function privacy(){
-    window.location.href="/privacy";
-}
-function tos(){
-    window.location.href="/tos";
-}
-function notice(){
-    window.location.href="/notice";
-}
-function ask(){
-    window.location.href="/ask";
-}
+
 
 class Footer extends React.Component{
     constructor(props){
@@ -52,15 +41,16 @@ class Square extends React.Component{
             <div style = {style}>
               <table>
                 <tr>
-                    <td><button onClick={privacy} style={{backgroundColor:"#FFFFFF", borderColor:"#FFFFFF"}}>개인정보처리방침</button></td>
-                    <td><button onClick={tos} style={{backgroundColor:"#FFFFFF", borderColor:"#FFFFFF"}}>이용약관</button></td>
-                    <td><button onClick={notice} style={{backgroundColor:"#FFFFFF", borderColor:"#FFFFFF"}}>공지사항</button></td>
-                    <td><button onClick={ask} style={{backgroundColor:"#FFFFFF", borderColor:"#FFFFFF"}}>문의하기</button></td>
-                    <td>비지니스 메일 novelia@gmail.com</td>
-                    <td><img src={facebook} alt="페이스북"></img></td>
-                    <td><img src={twitter} alt="트위터"></img></td>
-                    <td><img src={instagram} alt="인스타그램"></img></td>
-                    <td><img src={logo} alt="수평로고"></img></td>
+                    <td><a href="/privacy">개인정보처리방침 &nbsp;</a></td>
+                    <td><a href="/tos">이용약관 &nbsp;</a></td>
+                    <td><a href="/notice">공지사항 &nbsp;</a></td>
+                    <td><a href="/ask">문의하기 &nbsp;</a></td>
+                    <td><a href="/about">서비스 설명 &nbsp;</a></td>
+                    <td>비지니스 메일 novelia@gmail.com &nbsp;</td>
+                    <td><img src={facebook} alt="페이스북"></img> &nbsp;</td>
+                    <td><img src={twitter} alt="트위터"></img> &nbsp;</td>
+                    <td><img src={instagram} alt="인스타그램"></img> &nbsp;</td>
+                    <td><img src={logo} alt="수평로고"></img> &nbsp;</td>
                     <td><h5>All right reserved</h5></td>
                 </tr>
               </table>
