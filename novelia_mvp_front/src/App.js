@@ -22,6 +22,7 @@ import Notice2 from "./components/Notice/Notice2";
 import Ask from "./components/Ask/Ask";
 import Tos from "./components/Tos/Tos";
 import Privacypolicy from "./components/Privacypolicy/Privacypolicy";
+import About from "./components/About/About";
 import Choose from "./components/Feedback/Choose";
 import Write from "./components/Feedback/Write";
 import RegisterText from "./components/RegisterText/RegisterText";
@@ -57,6 +58,7 @@ function App() {
             <Route path ="/ask" element={<Ask />} />
             <Route path ="/tos" element={<Tos />} />
             <Route path ="/privacy" element={<Privacypolicy />} />
+            <Route path = "/about" element = {<About />} />
             <Route path ="/choose" element={<Choose />} />
             <Route path ="/write" element= {<Write />} />
             <Route path ="/text" element= {<RegisterText />} />
