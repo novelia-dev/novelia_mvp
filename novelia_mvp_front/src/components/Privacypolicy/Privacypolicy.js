@@ -1,34 +1,19 @@
 import React from 'react';
 
-class Privacypolicy extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return(
+function Privacypolicy(){
+    return(
+        <div>
             <div>
-                <Square />
+                <h3>개인정보 처리방침</h3>
             </div>
-        )
-    }
-}
-
-class Square extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        const style={
-            width:"786px",
-            height:"788px",
-            'background-color': "#D9D9D9",
-        };
-        return(
-            <div style = {style}>
-
+            <div>
+                <h5>노벨리에의 개인정보 처리방침입니다.</h5>
             </div>
-        )
-    }
+            <div>
+                <h5>개인정보 처리방침 내용</h5>
+            </div>
+        </div>
+    )
 }
 
 export default Privacypolicy;

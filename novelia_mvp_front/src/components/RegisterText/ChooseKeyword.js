@@ -1,6 +1,4 @@
 import React,{useState, useRef} from "react";
-import CreateUser from './CreateUser';
-import UserList from './UserList';
 
 function inputok(){
     alert('작품 등록이 완료되었습니다!');
@@ -8,63 +6,22 @@ function inputok(){
 
 function ChooseKeyword(){
 
-    const[inputs, setInputs] = useState({
-        username: '',
-        email: '',
-    });
 
-    const {username, email} = inputs;
+    const [text, setText] = useState('');
+    const [arr, setarr] = useState([]);
+    const InputText = (e) => {
+        setText(e.target.value);
+    }
+    const ResetText = () => {
+        setText('');
+    }
 
-    const onChange = e => {
-        const {name,value} = e.target;
+    const handleSubmit = (e) => {
+        setarr(arr => [...arr, text]);
+        setarr(arr => [...arr,' ']);
+        setText('');
+    }
 
-        setInputs({
-            ...inputs,
-            [name]: value,
-        });
-    };
-
-    const [users, setUsers] = useState([
-        {
-            id: 1,
-            username: 'velopert',
-            email: 'public.velopert@gmail.com',
-        },
-        {
-            id: 2,
-            username: 'tester',
-            email: 'tester@example.com',
-        },
-        {
-            id: 3,
-            username: 'liz',
-            email: 'liz@example.com',
-        },
-    ]);
-
-    const nextId = useRef(4);
-
-    const onCreate = () => {
-        const user = {
-            id: nextId.current,
-            username,
-            email,
-        };
-
-        setUsers(users.concat(user));
-
-        setInputs({
-            username: '',
-            email: '',
-        });
-
-        nextId.current += 1;
-    };
-
-    const onRemove = id => {
-        setUsers(users.filter(user => user.id !== id));
-    };
-  
     return(
         <div>
             <div>
@@ -77,26 +34,45 @@ function ChooseKeyword(){
                 <h3>캐릭터</h3>
             </div>
             <div>
-                <CreateUser username = {username} email = {email} onChange={onChange} onCreate={onCreate} />
-                <UserList user={users} onRemove={onRemove} />
+              <label>키워드 추가</label><input type="text" onChange={InputText} value={text} placeholder="30자 이내" />
+              <button onClick={handleSubmit}>추가</button>
+              <button onClick={ResetText}>초기화</button>
+            </div>
+            <div>
+                <b>{arr}</b>
             </div>
             <div>
                 <h3>몰입도</h3>
             </div>
             <div>
-            <label>키워드 추가</label><input type="text" placeholder="30자 이내" />
+            <label>키워드 추가</label><input type="text" onChange={InputText} value={text} placeholder="30자 이내" />
+            <button onClick ={handleSubmit}>추가</button>
+            <button onClick ={ResetText}>초기화</button>
+            </div>
+            <div>
+                <b>{arr}</b>
             </div>
             <div>
                 <h3>상업성</h3>
             </div>
             <div>
-            <label>키워드 추가</label><input type="text" placeholder="30자 이내" />
+            <label>키워드 추가</label><input type="text" onChange={InputText} value={text} placeholder="30자 이내" />
+            <button onClick={handleSubmit}>추가</button>
+            <button onClick={ResetText}>초기화</button>
+            </div>
+            <div>
+                <b>{arr}</b>
             </div>
             <div>
                 <h3>기타</h3>
             </div>
             <div>
-            <label>키워드 추가</label><input type="text" placeholder="30자 이내" />
+            <label>키워드 추가</label><input type="text" onChange={InputText} value={text} placeholder="30자 이내" />
+            <button onClick={handleSubmit}>추가</button>
+            <button onClick={ResetText}>초기화</button>
+            </div>
+            <div>
+                <b>{arr}</b>
             </div>
             <div>
                 <button onClick={inputok}>다음</button>

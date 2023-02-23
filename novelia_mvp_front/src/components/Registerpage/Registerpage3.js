@@ -64,8 +64,9 @@ class Registerpage3 extends React.Component{
     render(){
         return(
              <div>
+                
                 <Text />
-                <Square />
+                
             </div>
             
             
@@ -73,39 +74,48 @@ class Registerpage3 extends React.Component{
     }
 }
 
+function Text(){
 
-class Square extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        const style={
-            'postion': "absolute",
-            'width':"588px",
-            'height':"954px",
-            'margin-top': "89px",
-            'margin-left': "666px",
-            'background-color': "#D9D9D9",
-            'border':"1px",
-        };
-        return(
-            <div style = {style}>
+    const [nickname, setnickname] = useState("");
+    const [email, setemail] = useState("");
+    const [selected, setSelected] = useState("");
+    const [age, setAge] = useState("");
+    
 
-            </div>
-        )
-    }
-}
 
-class Text extends React.Component{
-    constructor(props){
-        super(props);
+    const onnicknamehandler = (e) => {
+        setnickname(e.target.value);
     }
 
-    render(){
-        function activeButton(){
-        alert("확인완료"); }
-        function submitactiveButton(){
-            alert("회원가입이 완료되었습니다."); }
+    const onemailhandler = (e) => {
+        setemail(e.target.value);
+    }
+
+    const ongenderhandler = (e) => {
+        setSelected(e.target.value);
+    }
+
+    const onAgehandler =(e) => {
+        setAge(e.target.value);
+    }
+
+    function activeButton(){
+        alert("확인완료");
+    }
+
+        function submitactiveButton(event){
+            event.preventDefault();
+            alert("회원가입이 완료되었습니다.");
+
+            var cast = {
+                nickname: nickname,
+                gender : selected,
+                email: email,
+                age : age
+            };
+            localStorage.setItem("cast",JSON.stringify(cast));
+        window.location.href="/register4"; }
+
         const style={
             'position':'absolute',
             'margin-top': "-9px",
@@ -162,14 +172,14 @@ class Text extends React.Component{
             닉네임*
         </div>
         <div style={style2}>
-            <input type="label"placeholder="플레이스 홀더"></input>
+            <input type="label"placeholder="플레이스 홀더" onChange={onnicknamehandler}></input>
 
         </div>
         <div style={style3} onClick={activeButton}>
         <botton > 중복확인</botton>
         </div>
         <div>
-               <select name="성별" style={{width:"240px",height:"30px"}}>
+               <select name="성별" style={{width:"240px",height:"30px"}} onChange={ongenderhandler}>
                   <option defaultValue="성별(남/여)" hidden>성별(남/여)*</option>
                   <option value="남">
                     남
@@ -180,7 +190,7 @@ class Text extends React.Component{
                </select>
             </div>
             <div>
-                <select name="나이대" style={{width:"240px",height:"30px"}}>
+                <select name="나이대" style={{width:"240px",height:"30px"}} onChange={onAgehandler}>
                     <option defaultValue="나이대" hidden>나이대*</option>
                     <option value="10대">
                         10대
@@ -200,7 +210,7 @@ class Text extends React.Component{
                 <h5 style={{width:"151px",height:"17px",fontFamily:"Roboto",color:"#666666"}}>이메일*</h5>
             </div>
             <div>
-                <input type="label" style={{width:"240px",height:"30px"}} placeholder="본인인증용 이메일"></input>
+                <input type="label" style={{width:"240px",height:"30px"}} placeholder="본인인증용 이메일" onChange={onemailhandler}></input>
             </div>
             <div>
                 <button>Check</button>
@@ -313,8 +323,10 @@ class Text extends React.Component{
     
         </div>
     )
-    }
 }
+
+
+
 
 
 export default Registerpage3;

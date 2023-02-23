@@ -1,6 +1,13 @@
 import React from 'react';
 
+function move(){
+    window.location.href="/register3";
+}
 
+function cancel(){
+    alert('취소되었습니다.');
+    window.location.href="/register";
+}
 
 class Registerpage2 extends React.Component{
     constructor(props){
@@ -111,8 +118,8 @@ class Text extends React.Component{
             <button>내용보기</button>
         </div>
         <div>
-            <button>취소</button>
-            <button>다음</button>
+            <button onClick={cancel}>취소</button>
+            <button onClick={move}>다음</button>
         </div>
         </div>
     )

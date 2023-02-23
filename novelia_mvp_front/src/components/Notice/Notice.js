@@ -1,34 +1,16 @@
 import React from 'react';
 
-class Notice extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return(
+function Notice(){
+    return(
+        <div>
             <div>
-                <Square />
+                <h3>공지사항</h3>
             </div>
-        )
-    }
-}
-
-class Square extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        const style={
-            width:"786px",
-            height:"845px",
-            'background-color': "#D9D9D9",
-        };
-        return(
-            <div style = {style}>
-
+            <div>
+                <h5>업데이트 내용, 이벤트, 각종 공지가 올라옵니다.</h5>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default Notice;

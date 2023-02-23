@@ -1,34 +1,19 @@
 import React from 'react';
 
-class Tos extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return(
+function Tos(){
+    return(
+        <div>
             <div>
-                <Square />
+                <h3>이용약관</h3>
             </div>
-        )
-    }
-}
-
-class Square extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        const style={
-            width:"786px",
-            height:"788px",
-            'background-color': "#D9D9D9",
-        };
-        return(
-            <div style = {style}>
-
+            <div>
+                <h5>노벨리에의 이용약관입니다.</h5>
             </div>
-        )
-    }
+            <div>
+                <h5>이용약관 내용</h5>
+            </div>
+        </div>
+    )
 }
 
 export default Tos;
