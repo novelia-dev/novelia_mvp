@@ -1,4 +1,28 @@
 import React from 'react';
+import main from '../Image/image 1.png';
+function jsonnickname(){
+    let json = JSON.parse(localStorage.getItem("cast"));
+    let txt = json.nickname;
+    return txt;
+}
+
+function jsonemail(){
+    let json = JSON.parse(localStorage.getItem("cast"));
+    let txt = json.email;
+    return txt;
+}
+
+function jsongender(){
+    let json = JSON.parse(localStorage.getItem("cast"));
+    let txt = json.gender;
+    return txt;
+}
+
+function jsonage(){
+    let json = JSON.parse(localStorage.getItem("cast"));
+    let txt = json.age;
+    return txt;
+}
 
 class Register4 extends React.Component{
     constructor(props){
@@ -8,31 +32,12 @@ class Register4 extends React.Component{
         return(
             <div>
                 <Text />
-                <Square/>
             </div>
         )
     }
 }
 
-class Square extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        const style={
-            width:"582px",
-            height:"867px",
-            'margin-top':"110px",
-            'margin-left':"669px",
-            'background-color': "#000000",
-        };
-        return(
-            <div style = {style}>
 
-            </div>
-        )
-    }
-}
 
 class Text extends React.Component{
     constructor(props){
@@ -79,8 +84,8 @@ class Text extends React.Component{
             'position':'absolute',
             'width':'Hug',
             'height':'Hug',
-            'margin-top':'300px',
-            'margin-left':'506px',
+            'margin-top':'200px',
+            'margin-left':'360px',
             'display':'flex',
             'flex-direction':'row',
             'justify-content':'center',
@@ -135,18 +140,21 @@ class Text extends React.Component{
             <tr>
            
             <div>
-                <button style={style3}>변경하기</button>
+                <table style={style3}>
+                    <td><img src={main} style={{ width:"100px", height:"100px"}} alt="개인정보" /><button>변경하기</button> </td>
+                </table>
+                 
+                 
             </div>
             </tr>
-            <tr><br/></tr>
             <tr>
             <div style = {style4}>
                 <table>
                         <tr><h5>기본정보</h5></tr>
-                        <tr><h5>닉네임 :</h5></tr>
-                        <tr><h5>성별 :</h5></tr>
-                        <tr><h5>나이대 :</h5></tr>
-                        <tr><h5>이메일 :</h5></tr>
+                        <tr><h5>닉네임 :</h5><input value={jsonnickname()}/></tr>
+                        <tr><h5>성별 :</h5><input value={jsongender()} /></tr>
+                        <tr><h5>나이대 :</h5><input value={jsonage()} /></tr>
+                        <tr><h5>이메일 :</h5><input value={jsonemail()} /></tr>
                 </table>
             </div>
             <div style={style5}>

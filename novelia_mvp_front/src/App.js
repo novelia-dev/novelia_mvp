@@ -13,7 +13,6 @@ import Registerpage2 from "./components/Registerpage/Registerpage2";
 import Registerpage3 from "./components/Registerpage/Registerpage3";
 import Registerpage4 from "./components/Registerpage/Registerpage4";
 import Footer from "./components/Footer/Footer";
-import Registerpage6 from "./components/Registerpage/Registerpage6";
 import Readworkpage from "./components/Readworkpage/Readworkpage";
 import Readworkpage2 from "./components/Readworkpage/Readworkpage2";
 import Readworkpage3 from "./components/Readworkpage/Readworkpage3";
@@ -35,6 +34,7 @@ import RegisterText7 from "./components/RegisterText/RegisterText7";
 import ChooseKeyword from "./components/RegisterText/ChooseKeyword";
 import Hilight from "./components/RegisterText/Hilight";
 import FeedSelect from "./components/RegisterText/FeedSelect";
+import Buy from "./components/Buy/Buy";
 function App() {
   return (
     <Router>
@@ -48,7 +48,6 @@ function App() {
             <Route path ="/register2" element={<Registerpage2 />} />
             <Route path ="/register3" element={<Registerpage3 />} />
             <Route path ="/register4" element={<Registerpage4 />} />
-            <Route path ="/register6" element={<Registerpage6/>}/>
             <Route path ="/read" element={<Readworkpage />} />
             <Route path ="/read2" element={<Readworkpage2 />} />
             <Route path ="/read3" element={<Readworkpage3 />} />
@@ -70,6 +69,7 @@ function App() {
             <Route path = "/choosekeyword" element = {<ChooseKeyword />} />
             <Route path ="/high" element= {<Hilight />} />
             <Route path ="/feed" element= {<FeedSelect />} />
+            <Route path ="/buy" element={<Buy />} />
           </Routes>
           
         </div>
