@@ -34,45 +34,12 @@ export class UsersController {
     private readonly authService: AuthService,
   ) {}
 
-  @ApiResponse({
-    status: 500,
-    description: 'Sserver Error..',
-  })
-  @ApiResponse({
-    status: 201,
-    description: '유저 생성 완료!',
-    type: ReadOnlyUserDto,
-  })
-  @ApiBody({
-    description: 'body exmaple',
-    type: UserPostDto,
-  })
-  @ApiOperation({ summary: '회원가입', description: '새로운 유저를 생성한다.' })
-  @Post()
-  async createUser(@Body() dto: CreateUserDto): Promise<void> {
-    const { name, email, password } = dto;
-    await this.usersService.createUser(name, email, password);
-  }
-
-  @ApiOperation({ summary: '하나 가져오기' })
-  @ApiBearerAuth('token')
-  @ApiResponse({
-    status: 201,
-    description: '',
-  })
-  @UseGuards(JwtAuthGuard)
-  @Get()
-  getCurrentCat(@Req() req: any) {
-    console.log(1234, req);
-    return req.user;
-  }
-
-  @ApiOperation({ summary: '이메일 인증 관련 api 프론트 상에서 만질일 없음' })
-  @Post('/email-verify')
-  async verifyEmail(@Query() dto: VerifyEmailDto): Promise<string> {
-    const { signupVerifyToken } = dto;
-    return await this.usersService.verifyEmail(signupVerifyToken);
-  }
+  // @ApiOperation({ summary: '이메일 인증 관련 api 프론트 상에서 만질일 없음' })
+  // @Post('/email-verify')
+  // async verifyEmail(@Query() dto: VerifyEmailDto): Promise<string> {
+  //   const { signupVerifyToken } = dto;
+  //   return await this.usersService.verifyEmail(signupVerifyToken);
+  // }
 
   @ApiOperation({ summary: '로그인' })
   @ApiBody({
@@ -110,5 +77,38 @@ export class UsersController {
   async getUserInfo(@Param('id') userId: string) {
     console.log(userId);
     return;
+  }
+
+  @ApiOperation({ summary: '하나 가져오기' })
+  @ApiBearerAuth('token')
+  @ApiResponse({
+    status: 201,
+    description: '',
+  })
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  getCurrentCat(@Req() req: any) {
+    console.log(1234, req);
+    return req.user;
+  }
+
+  @ApiResponse({
+    status: 500,
+    description: 'Sserver Error..',
+  })
+  @ApiResponse({
+    status: 201,
+    description: '유저 생성 완료!',
+    type: ReadOnlyUserDto,
+  })
+  @ApiBody({
+    description: 'body exmaple',
+    type: UserPostDto,
+  })
+  @ApiOperation({ summary: '회원가입', description: '새로운 유저를 생성한다.' })
+  @Post()
+  async createUser(@Body() dto: CreateUserDto): Promise<void> {
+    const { name, email, password } = dto;
+    await this.usersService.createUser(name, email, password);
   }
 }

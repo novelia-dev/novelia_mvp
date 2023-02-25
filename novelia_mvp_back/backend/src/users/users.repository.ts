@@ -50,7 +50,7 @@ export class UsersRepository {
     return user;
   }
 
-  async create(user: UserRequestDto): Promise<User> {
+  async create(user): Promise<User> {
     return await this.userModel.create(user);
   }
 }

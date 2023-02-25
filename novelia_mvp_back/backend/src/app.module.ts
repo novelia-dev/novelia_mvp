@@ -9,25 +9,34 @@ import mongoose from 'mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/user.entity';
+
 import { AuthModule } from './auth/auth.module';
+import { NovelModule } from './novel/novel.module';
+import { TagModule } from './tag/tag.module';
+import { ReviewModule } from './review/review.module';
+import { User } from './entity/user.entity';
+import { Novel } from './entity/novel.entity';
+import { Tag } from './entity/tag.entity';
+import { Genre } from './entity/genre.entity';
+import { LongReview } from './entity/longReview.entity';
+import { ShortReview } from './entity/shortReview.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configEmail],
     }),
-    // TypeOrmModule.forRoot({
-    //   type: 'mysql',
-    //   host: 'localhost',
-    //   port: 3306,
-    //   username: 'root',
-    //   password: 'root',
-    //   database: 'test',
-    //   entities: [User],
-    //   synchronize: true, //배포단계에서는 사용하지 말기
-    //   autoLoadEntities: true,
-    // }),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: process.env.LIGHTSAIL_DB_ENDPOINT,
+      port: 3306,
+      username: process.env.LIGHTSAIL_DB_USERNAME,
+      password: process.env.LIGHTSAIL_DB_PASSWORD,
+      database: 'test',
+      entities: [User, Novel, Tag, Genre, LongReview, ShortReview],
+      synchronize: true, //배포단계에서는 사용하지 말기
+      autoLoadEntities: true,
+    }),
     MongooseModule.forRoot(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -35,6 +44,9 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     EmailModule,
     AuthModule,
+    NovelModule,
+    TagModule,
+    ReviewModule,
   ],
   controllers: [AppController],
   providers: [AppService],
