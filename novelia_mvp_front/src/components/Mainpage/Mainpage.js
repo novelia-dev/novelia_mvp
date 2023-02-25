@@ -26,6 +26,8 @@ function Mainpage(){
         fetchData();
     },[]);
 
+   
+
     console.log(posts);
 
     const indexOfLast = currentPage * postsPerPage;
@@ -48,13 +50,13 @@ function Mainpage(){
                 </Slide>
             </ImageSlider>
         </div>
-        <div style={{marginTop:"300px", marginLeft:"928px"}}>
+        <div style={{marginTop:"30px", marginLeft:"928px"}}>
             <Posts posts={currentPosts(posts)} loading={loading}></Posts>
-            <Pagination
+            <Pagination>
                 postsPerPage={postsPerPage}
                 totalPosts={posts.length}
                 paginate={setCurrentPage}
-            ></Pagination>
+            </Pagination>
         </div>
         </div>
     );
