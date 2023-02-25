@@ -40,7 +40,7 @@ function App() {
   return (
     <Router>
       <Suspense fallback ={<div>Loading...</div>}>
-       <Navbar />
+    
         <div>
           <Routes>
             <Route path="/" element={<Mainpage />} />
@@ -76,7 +76,6 @@ function App() {
           
         </div>
 
-        <Footer />
       </Suspense>
     </Router>
   );

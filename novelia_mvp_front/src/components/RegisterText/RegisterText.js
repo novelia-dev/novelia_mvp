@@ -1,4 +1,6 @@
 import React,{useState, Component} from "react";
+import axios from 'axios';
+
 import Dropzone from "react-dropzone";
 function FileUpload(props)
 {
@@ -61,10 +63,61 @@ function RegisterText(props){
 
     const [Images, setImages] = useState([]);
 
+    const [title,setTitle] =useState("");
+    const [genre,setGenre] =useState("");
+    const [tag,setTag] =useState("");
+    const [content,setContent] =useState("");
+
+    const updateTitle = (title) => {
+        setTitle(title.target.value);
+    }
+
+    const updateGenre = (genre) => {
+        setGenre(genre.target.value);
+    }
+
+    const updateTag = (tag) => {
+        setTag(tag.target.value);
+    }
+
+    const updateContent = (content) => {
+        setContent(content.target.value);
+    }
+
     const updateImage = (Images) => {
         setImages(Images)
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        var datatoSubmit = {
+            title: title,
+            genre: genre,
+            tags: tag,
+            content: content
+        };
+
+        axios.post('https://localhost:8000/novel/:id',datatoSubmit)
+        .then(response => {
+           if(response.data.success){
+            alert('저장 성공')
+        } else{
+            alert('저장 실패')
+        }
+
+    })
+    .catch((error) => {
+        if(error.response){
+            console.log(error.response);
+            console.log("server refused");
+        } else if(error.request){
+            console.log("network error");
+        } else{
+            console.log(error);
+        }
+    });
+}
 
     return(
         <div>
@@ -76,10 +129,10 @@ function RegisterText(props){
         </div>
         <div><FileUpload refreshFunction={updateImage} /></div>
         <div>
-        <label>제목*</label><input id="title"type="text" placeholder="15자이내" />
+        <label>제목*</label><input type="text" placeholder="15자이내" onChange={updateTitle} />
         </div>
         <div>
-            <select name="장르선택">
+            <select name="장르선택" onChange={updateGenre}>
                 <option value="none" selected disabled hidden>장르선택</option>
                 <option value="로맨스">로맨스</option>
                 <option value="판타지">판타지</option>
@@ -87,7 +140,7 @@ function RegisterText(props){
         </div>
         <div>
         <table>
-           <td><label>태그등록*</label><input type="text" placeholder="최소 2개 이상 입력" /></td> 
+           <td><label>태그등록*</label><input type="text" placeholder="최소 2개 이상 입력" onChange={updateTag} /></td> 
            <td><label>태그신청</label><input type="text" placeholder="신규태그를 신청하세요" /></td>
         </table>
         
@@ -104,7 +157,7 @@ function RegisterText(props){
         </div>
         <div>
             <label>작품설명</label>
-            <input type ="text" placeholder="500자 이내" />
+            <input type ="text" placeholder="500자 이내" onChange={updateContent} />
         </div>
         <div>
             <label>샘플 이미지</label>
@@ -118,6 +171,7 @@ function RegisterText(props){
             </table>
         </div>
         <div>
+            <button type="primary" onClick={handleSubmit}>저장</button>
             <button onClick={movetoRegister}>다음</button>
         </div>
         </div>
