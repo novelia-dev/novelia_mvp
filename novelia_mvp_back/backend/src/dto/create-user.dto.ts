@@ -1,32 +1,14 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
-import { Document, SchemaOptions } from 'mongoose';
+import { ApiProperty, PickType } from '@nestjs/swagger';
+import { User } from 'src/users/user.entity';
 
-const options: SchemaOptions = {
-  timestamps: true,
-};
-
-@Schema(options)
-export class CreateUserDto extends Document {
-  @Prop({ required: true, unique: true })
-  @IsEmail()
-  @IsNotEmpty()
-  email: string;
-
-  @Prop({ required: true })
-  @IsString()
-  @IsNotEmpty()
-  name: string;
-
-  @Prop({ required: true })
-  @IsString()
-  @IsNotEmpty()
-  password: string;
-
-  readonly readOnlyData: {
-    id: string;
-    email: string;
-    name: string;
-  };
+export class CreateUserDto extends PickType(User, [
+  'email',
+  'name',
+  'password',
+] as const) {
+  @ApiProperty({
+    example: '3280199',
+    description: 'id',
+  })
+  id: string;
 }
