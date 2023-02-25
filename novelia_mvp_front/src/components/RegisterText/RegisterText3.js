@@ -1,10 +1,14 @@
 import React from "react";
 
+
+
 function movetosecond(){
     window.location.href="/text/2";
 }
 
 function RegisterText3(){
+
+
     return(
         <div>
             <div><h3>1화등록</h3></div>
