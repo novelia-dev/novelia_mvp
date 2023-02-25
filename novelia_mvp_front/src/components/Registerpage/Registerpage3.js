@@ -6,56 +6,56 @@ var state = {
     authCodeCheck: false,
 }
 
-function EmailConfirmPage(props)
-{
-    const[Email, setEmail] = useState("");
-    const[AuthCode, setAuthCode] = useState("");
+// function EmailConfirmPage(props)
+// {
+//     const[Email, setEmail] = useState("");
+//     const[AuthCode, setAuthCode] = useState("");
 
-    const onEmailHandler = (event) => {
-        setEmail(event.currentTarget.value);
-    };
+//     const onEmailHandler = (event) => {
+//         setEmail(event.currentTarget.value);
+//     };
 
-    const onAuthCodeHandler = (event) => {
-        setAuthCode(event.currentTarget.value);
-    };
+//     const onAuthCodeHandler = (event) => {
+//         setAuthCode(event.currentTarget.value);
+//     };
 
-    const onSendMailHandler = (event) => {
-        event.preventDefault();
-        state.cretedAuthCode = Math.random().toString(36).substring(2,8);
+//     const onSendMailHandler = (event) => {
+//         event.preventDefault();
+//         state.cretedAuthCode = Math.random().toString(36).substring(2,8);
 
-        const dataToSubmit = {
-            email: Email,
-            auth: state.createdAuthCode,
-        };
+//         const dataToSubmit = {
+//             email: Email,
+//             auth: state.createdAuthCode,
+//         };
 
-        var cast = {
-            "email" : Email
-        }
-        localStorage.setItem("cast",JSON.stringify(cast));
+//         var cast = {
+//             "email" : Email
+//         }
+//         localStorage.setItem("cast",JSON.stringify(cast));
 
-    };
-    const onCheckHandler = (event) => {
-        event.preventDefault();
+//     };
+//     const onCheckHandler = (event) => {
+//         event.preventDefault();
 
-        if(state.createdAuthCode === AuthCode){
-            state.authCodeCheck = true;
-            alert("이메일 인증에 성공하셨습니다.");
-            document.getElementById("authorizedConfirm")
-            .setAttribute("onClick", "location.href = '/register");
-        }else{
-            state.authCodeCheck = false;
-            alert("인증코드가 일치하지 않습니다.");
-        }
-    };
+//         if(state.createdAuthCode === AuthCode){
+//             state.authCodeCheck = true;
+//             alert("이메일 인증에 성공하셨습니다.");
+//             document.getElementById("authorizedConfirm")
+//             .setAttribute("onClick", "location.href = '/register");
+//         }else{
+//             state.authCodeCheck = false;
+//             alert("인증코드가 일치하지 않습니다.");
+//         }
+//     };
 
-    const Authentication = (event) => {
-        event.preventDefault();
+//     const Authentication = (event) => {
+//         event.preventDefault();
 
-        if(!state.authCodeCheck){
-            alert("먼저 이메일 인증을 해주세요.");
-        }
-    }
-}
+//         if(!state.authCodeCheck){
+//             alert("먼저 이메일 인증을 해주세요.");
+//         }
+//     }
+// }
 
 class Registerpage3 extends React.Component{
     constructor(props){
@@ -83,20 +83,20 @@ function Text(){
     
 
 
-    const onnicknamehandler = (e) => {
-        setnickname(e.target.value);
+    const onnicknamehandler = (nickname) => {
+        setnickname(nickname.target.value);
     }
 
-    const onemailhandler = (e) => {
-        setemail(e.target.value);
+    const onemailhandler = (email) => {
+        setemail(email.target.value);
     }
 
-    const ongenderhandler = (e) => {
-        setSelected(e.target.value);
+    const ongenderhandler = (gender) => {
+        setSelected(gender.target.value);
     }
 
-    const onAgehandler =(e) => {
-        setAge(e.target.value);
+    const onAgehandler =(age) => {
+        setAge(age.target.value);
     }
 
     function activeButton(){
@@ -113,8 +113,19 @@ function Text(){
                 email: email,
                 age : age
             };
+
+            axios.post('https://localhost:8000/user',cast)
+            .then(response =>{
+                if(response.data.success)
+                {
+                    console.log('회원가입 성공')
+                } else {
+                    console.log('회원가입 실패')
+                }
+            })
+
             localStorage.setItem("cast",JSON.stringify(cast));
-        window.location.href="/register4"; }
+            window.location.href="/register4"; }
 
         const style={
             'position':'absolute',

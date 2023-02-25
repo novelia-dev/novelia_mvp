@@ -1,0 +1,24 @@
+.Btn {
+    margin-right: 15px;
+    font-size: 13px;font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+
+    align-items: center;
+    text-align: center;
+    width:76px;
+    height:29px;
+    color:  #000000;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 50px;
+    padding:7px,14px;
+    gap:10px;
+    border: 1px solid #000000;}
+    .active {
+        color:  #FFFFFF;
+        background-color: #AA0140;
+        border: 0px solid #000000;
+    }

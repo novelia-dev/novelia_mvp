@@ -68,6 +68,11 @@ function RegisterText(props){
     const [tag,setTag] =useState("");
     const [content,setContent] =useState("");
 
+    const [question,setQuestion] = useState("");
+    const [answer,setAnswer] =useState("");
+    const [wrong1,setWrong1] =useState("");
+    const [wrong2,setWrong2] = useState("");
+ 
     const updateTitle = (title) => {
         setTitle(title.target.value);
     }
@@ -88,14 +93,40 @@ function RegisterText(props){
         setImages(Images)
     }
 
+    const updateQuestion = (question) => {
+        setQuestion(question.target.value);
+    }
+
+    const updateAnswer = (answer) => {
+        setAnswer(answer.target.value);
+    }
+
+    const updateWrong1 = (wrong1) => {
+        setWrong1(wrong1.target.value);
+    }
+
+    const updateWrong2 = (wrong2) => {
+        setWrong2(wrong2.target.value);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if(!title || !genre || !tag || !content || !question || !answer || !wrong1 || !wrong2)
+        {
+            alert('모든 항목을 입력하세요.');
+        }
+
 
         var datatoSubmit = {
             title: title,
             genre: genre,
             tags: tag,
-            content: content
+            content: content,
+            question: question,
+            answer: answer,
+            wrong1: wrong1,
+            wrong2: wrong2
         };
 
         axios.post('https://localhost:8000/novel/:id',datatoSubmit)
@@ -127,7 +158,21 @@ function RegisterText(props){
         <div>
             <h5>새롭게 피드백 받을 작품의 기본적인 정보를 입력해주세요.</h5>
         </div>
-        <div><FileUpload refreshFunction={updateImage} /></div>
+        <div>
+            <table>
+                <td><FileUpload refreshFunction={updateImage} /></td>
+                <td>
+                    <label>작품 감상 확인용 질문</label><input type="text" onChange={updateQuestion} placeholder="5화 분량을 읽고 알 수 있는 내용의 질문을 입력하세요. ex) 주인공의 이름? " />
+                    <br/>
+                    <label>정답</label><input type="text" onChange={updateAnswer} />
+                    <br/>
+                    <label>오답</label><input type="text" onChange={updateWrong1} />
+                    <br/>
+                    <label>오답</label><input type="text" onChange={updateWrong2} />
+                </td>
+            </table>
+            
+        </div>
         <div>
         <label>제목*</label><input type="text" placeholder="15자이내" onChange={updateTitle} />
         </div>

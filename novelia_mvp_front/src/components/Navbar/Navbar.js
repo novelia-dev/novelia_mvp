@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import Novelist from '../Image/Navbar_logo.png';
+import './Navbar.css';
 function Navbar(){
     const Text = ()=> {
 

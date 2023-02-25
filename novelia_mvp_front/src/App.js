@@ -16,7 +16,6 @@ import Footer from "./components/Footer/Footer";
 import Readworkpage from "./components/Readworkpage/Readworkpage";
 import Readworkpage2 from "./components/Readworkpage/Readworkpage2";
 import Readworkpage3 from "./components/Readworkpage/Readworkpage3";
-import Quiz from "./components/Quiz/Quiz";
 import Notice from "./components/Notice/Notice";
 import Notice2 from "./components/Notice/Notice2";
 import Ask from "./components/Ask/Ask";
@@ -52,7 +51,6 @@ function App() {
             <Route path ="/read" element={<Readworkpage />} />
             <Route path ="/read2" element={<Readworkpage2 />} />
             <Route path ="/read3" element={<Readworkpage3 />} />
-            <Route path ="/quiz" element={<Quiz />} />
             <Route path ="/notice" element={<Notice />} />
             <Route path ="/notice2" element={<Notice2 />} />
             <Route path ="/ask" element={<Ask />} />
